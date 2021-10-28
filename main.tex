@@ -1,0 +1,74 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with`a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{NLP Problem Set 2}
+\date{}
+\author{Rutvik Pansare, Kula Maganti, Tyler Arnett}
+
+\begin{document}
+\maketitle
+
+\section*{Q 2.1}
+
+
+\begin{flushleft}
+
+Part 1.
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=15cm]{main_table.png}
+    \caption{Table}
+    \label{Table}
+\end{figure}
+
+
+Part 2.
+\vskip 0.2in
+Q1. 
+The tagger got 87.11\% of the tags correct.
+\vskip 0.2in
+Q2. 
+The baseline accuracy performed well in this case with an accuracy of around 95\%. The baseline accuracy was computed by running the nltk.pos\_tag() method on each word and finding the most common tag for the word. This result is stored in a lookup dictionary.
+\vskip 0.2in
+
+Q.3
+The Viterbi algorithm should probably yield higher accuracy than "pick the most frequent POS" because the meaning of the words depend on the context in which it is used. The Viterbi algorithm finds the POS tag by using the Markov chain assumption that if we want to predict the future in the sequence, all that matters is the current state. Hence the Viterbi algorithm keeps some form context in memory and calculates the most probable clause. On the other hand the most frequent POS tag method assumes that the POS tag will always be the most frequent tag which is an incorrect assumption. For example, the word "play" is usually marked as a verb as it is most commonly used as a verb but it can also mean a theatrical play in which case it is a noun. Hence the POS of a word highly depends on the context in which it is used which the Viterbi algorithm keeps in check and thus gives better result.
+\vskip 0.2in
+
+BONUS:
+Two tweets made by Obama were chosen for the US politician and 2 Shakespearean sentences were chosen.
+The output is in \ref{output}.
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=15cm]{bonus.png}
+    \caption{Output}
+    \label{output}
+\end{figure}
+\vskip 0.2in
+
+As we can see there was a drop in precision by 1\% i.e., the false positives were more when complicated English sentences were tested on the POS tagger.
+The tweet1 was tagged with around 4 incorrect tags hence accuracy is 85\%
+Tweet2 was tagged with 3 incorrect tags so accuracy is 85\%
+Shakespeare 1 was tagged with 3 in-correct tag and the accuracy was 70\%
+Shakespeare 2 was tagged with 4 incorrect tags with accuracy of around 81\%
+Hence we can see that when the Viterbi encounters a new word, the accuracy of the program reduces as it does not have the emission probabilities for that word.This scenario happened in the Shakespeare's sentences. The impact was more likely on false positives as the Viterbi algorithm will try to maximize the tag with highest state probabilities. 
+
+\end{flushleft}
+
+\bibliographystyle{alpha}
+\bibliography{sample}
+
+\end{document}
